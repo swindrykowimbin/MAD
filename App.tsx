@@ -1,97 +1,72 @@
-
-import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
+import React from 'react';
 
 const App = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onSignIn = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
-    alert('Sign In ditekan!');
-  };
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+    <View style={styles.main}>
+      <View style={styles.topBar}>
+        <View style={styles.blackBox} />
+        <View style={styles.yellowBox} />
+        <View style={styles.blackBox} />
+      </View>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Username</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukan username anda"
-          value={username}
-          onChangeText={setUsername}
+      <View style={styles.centerContent}>
+        <Image
+          source={require('./asset/image/logomotto.png')}
+          style={styles.logo}
         />
       </View>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Masukan password anda"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
+      <View style={styles.bottomBar}>
+        <View style={styles.blackBox} />
+        <View style={styles.yellowBox} />
+        <View style={styles.blackBox} />
       </View>
-
-      <TouchableOpacity style={styles.button} onPress={onSignIn}>
-        <Text style={styles.buttonText}>Sign In</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 
+export default App;
+
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    padding: 20,
+    backgroundColor: 'white',
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    gap: 15,
+    paddingLeft: 15,
+    height: 100,
+  },
+  bottomBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'blue',
+    height: 100,
+  },
+  blackBox: {
+    width: 70,
+    height: 70,
+    backgroundColor: 'black',
+  },
+  yellowBox: {
+    width: 70,
+    height: 70,
+    backgroundColor: 'yellow',
+  },
+  centerContent: {
+    flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    alignItems: 'center',
   },
-  title: {
-    fontSize: 28,
-    fontWeight: '700',
-    marginBottom: 40,
-    textAlign: 'center',
-    color: '#000',
-  },
-  inputContainer: {
-    marginBottom: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 6,
-    color: '#333',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: '#FF6600',
-    paddingVertical: 14,
-    borderRadius: 8,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
-    textAlign: 'center',
+  logo: {
+    width: 350,
+    height: 150,
+    resizeMode: 'contain',
   },
 });
-
-export default App;
